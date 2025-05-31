@@ -14,7 +14,9 @@ ENV RICU_DATA_PATH=/var/data/
 
 RUN mkdir -p /var/data
 RUN mkdir -p /app
+
 WORKDIR /app
-COPY start.sh start.sh
+
+COPY scripts/ .
 
 CMD ["bash", "./start.sh"]
