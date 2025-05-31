@@ -7,7 +7,14 @@ RUN apt-get update -qq \
         libcurl4-gnutls-dev \
         libxml2-dev
 
-RUN Rscript -e 'install.packages("remotes")' \
-    && Rscript -e 'remotes::install_github("eth-mds/ricu")' 
+RUN Rscript -e 'install.packages("ricu")' \
+    && Rscript -e 'install.packages("units")' \
 
 ENV RICU_DATA_PATH=/var/data/
+
+RUN mkdir -p /var/data
+RUN mkdir -p /app
+WORKDIR /app
+COPY start.sh start.sh
+
+CMD ["bash", "./start.sh"]
