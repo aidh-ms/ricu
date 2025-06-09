@@ -9,3 +9,4 @@ services:
     volumes:
       - ~/data/physionet.org/files/mimiciv/3.1/:/var/data/miiv
       - ~/data/physionet.org/files/eicu-crd/2.0/:/var/data/eicu
+      - ~/data/ricu/:/var/data/output

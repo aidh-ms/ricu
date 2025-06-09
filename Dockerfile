@@ -7,10 +7,8 @@ RUN apt-get update -qq \
         libcurl4-gnutls-dev \
         libxml2-dev
 
-RUN Rscript -e 'install.packages("ricu")' \
-    && Rscript -e 'install.packages("units")' \
+RUN Rscript -e 'install.packages(c("ricu", "units", "arrow"))'
 
-ENV RICU_DATA_PATH=/var/data/
 
 RUN mkdir -p /var/data
 RUN mkdir -p /app
@@ -19,5 +17,7 @@ WORKDIR /app
 
 COPY scripts/ .
 COPY ricu/ ricu/
+
+ENV RICU_DATA_PATH=/var/data/
 
 CMD ["bash", "./start.sh"]
