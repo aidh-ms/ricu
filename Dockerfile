@@ -18,5 +18,6 @@ RUN mkdir -p /app
 WORKDIR /app
 
 COPY scripts/ .
+COPY ricu/ ricu/
 
 CMD ["bash", "./start.sh"]
