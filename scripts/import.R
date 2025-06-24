@@ -16,18 +16,18 @@ src = c("eicu", "miiv")
 
 import_src(src)
 
-# concepts = concept_availability(cfg_dirs = concept_path)
-# for (s in src) {
-#     source_path = paste0(out_path, "/", s)
-#     if (!dir.exists(source_path)) {
-#         dir.create(source_path, recursive = TRUE)
-#     }
+concepts = concept_availability(cfg_dirs = concept_path)
+for (s in src) {
+    source_path = paste0(out_path, "/", s)
+    if (!dir.exists(source_path)) {
+        dir.create(source_path, recursive = TRUE)
+    }
 
-#     for (concept in rownames(concepts)) {
-#         if (!concepts[concept, s]) {
-#             next
-#         }
-#         data = load_concepts(concept, s)
-#         arrow::write_parquet(data, paste0(source_path, "/", sprintf("%s.parquet", concept)))
-#     }
-# }
+    for (concept in rownames(concepts)) {
+        if (!concepts[concept, s]) {
+            next
+        }
+        data = load_concepts(concept, s)
+        arrow::write_parquet(data, paste0(source_path, "/", sprintf("%s.parquet", concept)))
+    }
+}
