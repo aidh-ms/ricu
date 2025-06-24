@@ -7,8 +7,9 @@ RUN apt-get update -qq \
         libcurl4-gnutls-dev \
         libxml2-dev
 
-RUN Rscript -e 'install.packages(c("ricu", "units", "arrow"))'
-
+# RUN Rscript -e 'install.packages(c("ricu", "units", "arrow"))'
+RUN Rscript -e 'install.packages(c("units", "arrow", "remotes"))'
+RUN Rscript -e 'remotes::install_github("eth-mds/ricu")'
 
 RUN mkdir -p /var/data
 RUN mkdir -p /app
